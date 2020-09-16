@@ -1,0 +1,46 @@
+<latex> ::= <configuracao> <identificacao>
+	| <configuracao> <principal>
+
+<configuracao> ::= CLASSE { <ignorar> } <configuracao)>
+	| <PACOTE> { <ignorar> } <configuracao>
+	| <PACOTE> [ <ignorar> ] { <ignorar> } <configuracao>
+	| ;
+
+<PACOTE> ::= \userpackege
+
+<identificacao> ::= TITULO { <texto> } <identificacao>
+	| AUTOR { <texto> } <identificacao>
+	| DATA { <texto> } <identificacao>
+	| ;
+
+<principal> ::= INICIODOC <corpoLista> FIMDOC
+
+<corpoLista> ::= SESSAO { <texto> } <texto> <corpoLista>
+	| <imagems> <corpoLista>
+	| <texto> <corpoLista>
+	| BIBSTYLE { <ignorar> } <corpoLista>
+	| BIBIB { <ignorar> } <corpoLista>
+	| CITEP { <ignorar> } <corpoLista>
+	| ;
+
+<imagems> ::= INICIOIMAGEM PARAMETROIMAG <corpoImagem> FIMIMAGEM <corpoLista>
+	| INICIOIMAGEM <corpoImagem> FIMIMAGEM <corpoLista>
+
+<corpoImagem> ::= <includegraphics> <captions>
+
+<includegraphics> ::= INCLUDEGRAP [ <ignorar> ] { <texto> }
+
+<capitions> ::= CAPTION { <texto> }
+	| ;
+
+<texto> ::= NUMERO <texto2>
+	| TEXTO <texto2>
+
+<texto2> ::= NUMERO <texto2>
+	| TEXTO <texto2>
+	| TEXTOLN <texto2>
+	| ;
+
+<ignorar> ::= NUMERO <ignorar>
+	| TEXTO <ignorar>
+	| ;
