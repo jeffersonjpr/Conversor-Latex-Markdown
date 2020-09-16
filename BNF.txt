@@ -31,7 +31,8 @@
 	| <bibstyle> { <ignorar> } <corpoLista>
 	| <bibib> { <ignorar> } <corpoLista>
 	| <citep> { <ignorar> } <corpoLista>
-	| ;
+	| <itemize> <corpoLista>
+	| <enumerate> <corpoLista>;
 
 <sessao> ::= \section
 	| \chapter
@@ -41,6 +42,28 @@
 <bibib> ::= \bibliography
 
 <citep> ::= \citep
+
+<itemize> ::= <inicioitem> <corpoitem> <fimitem>
+
+<incioitem> ::= begin{itemize}
+
+<fimitem> ::= end{itemize}
+
+<corpoitem> ::= <item> <texto> <corpoitem>
+	| <itemize> <corpoitem>
+	| ;
+
+<enumerar> ::= <inicioenume> <corpoenum> <fimenume>
+
+<inicioenume> ::= \begin{enumerate}
+
+<fimenume> ::= \fim{enumerate}
+
+<corpoenum> ::= <item> <texto> <corpoenum>
+	| <enumerar> <corpoenum>
+	| ;
+
+<item> ::= \item
 
 <imagems> ::= <inicioimagem> [ <ignorar> ] <corpoImagem> <fimimagem> <corpoLista>
 	| <inicioimagem> <corpoImagem> <fimimagem> <corpoLista>
@@ -55,7 +78,7 @@
 
 <includegrap> ::= \includegraphics
 
-<captions> ::= <caption> { <texto> }
+<captions> ::= caption { <texto> }
 	| ;
 
 <caption> ::= \caption 
