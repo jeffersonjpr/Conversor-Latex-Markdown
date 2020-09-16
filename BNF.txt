@@ -55,10 +55,10 @@
 
 <includegrap> ::= \includegraphics
 
-<capitions> ::= <capition> { <texto> }
+<captions> ::= <caption> { <texto> }
 	| ;
 
-<capition> ::= \caption 
+<caption> ::= \caption 
 
 <texto> ::= NUMERO <texto2>
 	| TEXTO <texto2>
