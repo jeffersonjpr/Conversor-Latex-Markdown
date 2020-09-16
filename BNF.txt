@@ -55,7 +55,7 @@
 
 <includegrap> ::= \includegraphics
 
-<capitions> ::= CAPTION { <texto> }
+<capitions> ::= <capition> { <texto> }
 	| ;
 
 <capition> ::= \caption 
