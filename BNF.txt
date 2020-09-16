@@ -1,37 +1,64 @@
-<latex> ::= <configuracao> <identificacao>
-	| <configuracao> <principal>
+<latex> ::= <configuracao> <identificacao> <configuracao> <principal>
 
-<configuracao> ::= CLASSE { <ignorar> } <configuracao)>
-	| <PACOTE> { <ignorar> } <configuracao>
-	| <PACOTE> [ <ignorar> ] { <ignorar> } <configuracao>
+<configuracao> ::= <class> { <ignorar> } <configuracao>
+	| <pacote> { <ignorar> } <configuracao>
+	| <pacote> [ <ignorar> ] { <ignorar> } <configuracao>
 	| ;
 
-<PACOTE> ::= \userpackege
+<classe> ::= \documentclass
+<pacote> ::= \userpackege
 
-<identificacao> ::= TITULO { <texto> } <identificacao>
-	| AUTOR { <texto> } <identificacao>
-	| DATA { <texto> } <identificacao>
+<identificacao> ::= <titulo> { <texto> } <identificacao>
+	| <autor> { <texto> } <identificacao>
+	| <data> { <texto> } <identificacao>
 	| ;
 
-<principal> ::= INICIODOC <corpoLista> FIMDOC
+<titulo> ::= \title
 
-<corpoLista> ::= SESSAO { <texto> } <texto> <corpoLista>
+<autor> ::= \author
+
+<data> ::= \date
+
+<principal> ::= iniciodoc <corpoLista> fimdoc
+
+<iniciodoc> ::= \begin{document}
+
+<fimdoc> ::= \end{document}
+
+<corpoLista> ::= <sessao> { <texto> } <texto> <corpoLista>
 	| <imagems> <corpoLista>
 	| <texto> <corpoLista>
-	| BIBSTYLE { <ignorar> } <corpoLista>
-	| BIBIB { <ignorar> } <corpoLista>
-	| CITEP { <ignorar> } <corpoLista>
+	| <bibstyle> { <ignorar> } <corpoLista>
+	| <bibib> { <ignorar> } <corpoLista>
+	| <citep> { <ignorar> } <corpoLista>
 	| ;
 
-<imagems> ::= INICIOIMAGEM PARAMETROIMAG <corpoImagem> FIMIMAGEM <corpoLista>
-	| INICIOIMAGEM <corpoImagem> FIMIMAGEM <corpoLista>
+<sessao> ::= \section
+	| \chapter
+
+<bibstyle> ::= 	\bibliographystyle
+
+<bibib> ::= \bibliography
+
+<citep> ::= \citep
+
+<imagems> ::= <inicioimagem> [ <ignorar> ] <corpoImagem> <fimimagem> <corpoLista>
+	| <inicioimagem> <corpoImagem> <fimimagem> <corpoLista>
+
+<inicioimagem> ::= \begin{figure}
+
+<fimimagem> ::= \end{figure}
 
 <corpoImagem> ::= <includegraphics> <captions>
 
-<includegraphics> ::= INCLUDEGRAP [ <ignorar> ] { <texto> }
+<includegraphics> ::= <includegrap> [ <ignorar> ] { <texto> }
+
+<includegrap> ::= \includegraphics
 
 <capitions> ::= CAPTION { <texto> }
 	| ;
+
+<capition> ::= \caption 
 
 <texto> ::= NUMERO <texto2>
 	| TEXTO <texto2>
