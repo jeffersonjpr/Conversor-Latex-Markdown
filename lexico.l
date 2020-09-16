@@ -27,6 +27,11 @@ palavra		({pontos}|{numeros}|{letra})+
 "\\chapter"				{ return SESSAO; }
 "\\begin{figure}"		 { return INICIOIMAGEM; }
 "\\end{figure}"		 	 { return FIMIMAGEM; }
+"\\begin{itemize}"		{ return INICIOITEM; }
+"\\end{itemize}"		{ return FIMITEM; }
+"\\begin{enumerate}"	{ return INICIOENUME; }
+"\\end{enumerate}"		{ return FIMENUME; }
+"\\item"				{ return ITEM; }
 "\\bibliographystyle"   { return BIBSTYLE; }
 "\\bibliography"  		{ return BIBIB; }
 "\\caption"		 		{ return CAPTION; }
@@ -36,7 +41,6 @@ palavra		({pontos}|{numeros}|{letra})+
 "\\centering"			;
 "\\label"				;
 {palavra}				{ yylval.s = strdup(yytext); return TEXTO; }
-{palavra}[\n]?			{ yylval.s = strdup(yytext); return TEXTOLN; }
-[0-9]+					{ yylval.ival = atoi(yytext); return NUMERO; }
+{palavra}[\n]?			{ yytext[strlen(yytext) - 1] = ' '; yylval.s = strdup(yytext); return TEXTOLN; }
 .						;
 %%
