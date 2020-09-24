@@ -1,5 +1,6 @@
 # Tradutor Simples Latex para Markdown
 <div align="center">
+ 
 ![visitor badge](https://visitor-badge.laobi.icu/badge?page_id=Conversor-Latex-Markdown&title=Viewers)
 </div>
 
