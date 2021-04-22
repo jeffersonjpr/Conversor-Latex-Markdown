@@ -16,3 +16,20 @@ Trabalho feito com o intuito de aplicar os conceitos aprendidos na primeira part
   * Aluno de Ciência da Computação na UTFPR.
 * **Nicholas Damasceno Pinto**
   * Aluno de Ciência da Computação na UTFPR.
+
+### MakeFile
+'''console
+conversor: sintatico.y lexico.l
+	clear
+	flex lexico.l
+	bison -d sintatico.y
+	gcc -o conversor.out lex.yy.c sintatico.tab.c -lfl
+	./conversor.out teste1.lex markdown.md
+clean:
+	rm lex.yy.c sintatico.tab.c sintatico.tab.h
+teste1:
+	./conversor.out teste1.lex markdown.md
+teste2:
+	./conversor.out teste2.lex markdown.md
+
+'''
