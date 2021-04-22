@@ -18,7 +18,7 @@ Trabalho feito com o intuito de aplicar os conceitos aprendidos na primeira part
   * Aluno de Ciência da Computação na UTFPR.
 
 ### MakeFile
-'''console    
+```console
 conversor: sintatico.y lexico.l
 	clear
 	flex lexico.l
@@ -31,4 +31,5 @@ teste1:
 	./conversor.out teste1.lex markdown.md
 teste2:
 	./conversor.out teste2.lex markdown.md
-'''
+foo
+```
