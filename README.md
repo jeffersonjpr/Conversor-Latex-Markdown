@@ -31,5 +31,4 @@ teste1:
 	./conversor.out teste1.lex markdown.md
 teste2:
 	./conversor.out teste2.lex markdown.md
-foo
 ```
